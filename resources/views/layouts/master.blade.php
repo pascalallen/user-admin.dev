@@ -5,16 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>User/Admin Portal</title>
-
 		{{-- BOOTSTRAP CSS --}}
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-
-		{{-- CUSTOM CSS --}}
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-
 		{{-- FONT AWESOME --}}
 		<link rel="stylesheet" href="css/font-awesome.min.css">
-
+		{{-- CUSTOM CSS --}}
+		<link rel="stylesheet" type="text/css" href="css/main.css">
 		@yield('top-script')
 	</head>
 	<body>
@@ -33,15 +29,13 @@
 		@include('partials.footer')
 
 		<!-- JQUERY -->
-		<script src="/js/jquery-2.1.4.min.js"></script>
-
+		<script src="js/jquery-3.1.1.min.js"></script>
 		<!-- BOOTSTRAP JS -->
-		<script src="/js/bootstrap.min.js"></script>
-
+		<script src="js/bootstrap.min.js"></script>
+		{{-- AngularJS --}}
+		<script src="js/angular.min.js"></script>
 		<!-- CUSTOM JS BELOW -->
-		<script src="/js/main.js"></script>
-
+		<script src="js/main.js"></script>
 		@yield('bottom-script')
-
 	</body>
 </html>

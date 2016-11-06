@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('top-script')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+    <style type="text/css">
+        .row {
+            margin: 0;
+            text-align: center;
+        }
+        .login {
+            position: absolute;
+            margin-top: 150px;
+        }
+    </style>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+@stop
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+@section('content')
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 login">
+            {{ Form::open(array('action' => 'HomeController@postLogin')) }}
+                <div class="{{ ($errors->has('email')) ? 'has-error' : '' }} form-group">
+                    {{ $errors->first('email', '<div class="alert alert-danger">:message</div>') }}
+                    {{ Form::label('email', 'Email') }}
+                    {{ Form::email('email', Input::old('email'), ['class' => 'form-control', 'placeholder'=>'Email']) }}
+                </div>
+                <div class="{{ ($errors->has('password')) ? 'has-error' : '' }} form-group">
+                    {{ $errors->first('password', '<div class="alert alert-danger">:message</div>') }}
+                    {{ Form::label('password', 'Password') }}
+                    {{ Form::password('password', ['class' => 'form-control', 'placeholder'=>'Password']) }}
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            {{ Form::close() }}
         </div>
-    </body>
-</html>
+    </div>
+
+@stop
+
+@section('bottom-script')
+
+@stop
