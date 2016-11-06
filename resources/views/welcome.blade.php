@@ -32,6 +32,7 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             {!! Form::close() !!}
+        <a href="{!! action('UsersController@create') !!}">Not a member? Sign up!</a>
         </div>
     </div>
 

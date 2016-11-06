@@ -20,3 +20,5 @@ Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
 }]);
 
 Route::post('login', 'Controller@postLogin');
+
+Route::resource('users', 'UsersController');
