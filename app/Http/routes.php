@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
 }]);
+
+Route::post('login', 'Controller@postLogin');

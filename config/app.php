@@ -202,7 +202,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form'=> 'Illuminate\Html\FormFacade',
-        'HTML'=> 'Illuminate\Html\HtmlFacade'
+        'HTML'=> 'Illuminate\Html\HtmlFacade',
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

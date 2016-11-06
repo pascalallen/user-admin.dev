@@ -19,7 +19,7 @@
 
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4 login">
-            {!! Form::open(array('action' => 'HomeController@postLogin')) !!}
+            {!! Form::open(array('action' => 'Controller@postLogin')) !!}
                 <div class="{!! ($errors->has('email')) ? 'has-error' : '' !!} form-group">
                     {!! $errors->first('email', '<div class="alert alert-danger">:message</div>') !!}
                     {!! Form::label('email', 'Email') !!}
