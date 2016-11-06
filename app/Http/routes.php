@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
+    return "this page requires that you be logged in and an Admin";
+}]);
