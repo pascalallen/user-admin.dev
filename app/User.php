@@ -16,6 +16,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    public static $rules = array(
+            'name'     => 'required|max:100',
+            'email'    => 'required|max:100',
+            'password' => 'required|max:100|min:6',
+    );
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

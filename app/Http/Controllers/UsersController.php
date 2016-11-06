@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\User;
+use Log;
+use Input;
+use Validator;
+use Session;
+use Redirect;
+use Auth;
 
 class UsersController extends Controller
 {
-    public function __construct()
-	{
-		parent::__construct();
-		$this->beforeFilter('auth', array('except' => array('create', 'store')));
-	}
+ //    public function __construct()
+	// {
+	// 	parent::__construct();
+	// 	$this->beforeFilter('auth', array('except' => array('create', 'store')));
+	// }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -21,7 +28,7 @@ class UsersController extends Controller
 	public function index()
 	{
 		$user = Auth::user();
-		return View::make('users.index')->with('user', $user);
+		return view('users.index')->with('user', $user);
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -30,7 +37,7 @@ class UsersController extends Controller
 	 */
 	public function create()
 	{
-		return View::make('users.create');
+		return view('users.create');
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -47,19 +54,9 @@ class UsersController extends Controller
 	        Session::flash('errorMessage', 'Validation failed');
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
-			$user->username = Input::get('username');
+			$user->name = Input::get('name');
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
-			$image = Input::file('image');
-			$user->location = Input::get('location');
-			
-			if ($image) {
-				$filename = $image->getClientOriginalName();
-				$user->image = '/uploaded/' . $filename;
-				$image->move('uploaded/', $filename);
-			} else{
-				$user->image="/css/monkey-icon-taupe-on-cream.png";
-			}
 			$user->save();
 			Auth::login($user);
 			$user = Auth::user();
@@ -77,7 +74,7 @@ class UsersController extends Controller
 	{
 		$user = User::find($id);
 		
-		return View::make('users.show', compact('user'));
+		return view('users.show', compact('user'));
 	}
 	/**
 	 * Show the form for editing the specified resource.
@@ -94,7 +91,7 @@ class UsersController extends Controller
 		}
 		$post = Post::with('user')->get();
 		$user = User::find($id);
-		return View::make('users.edit', compact('user'));
+		return view('users.edit', compact('user'));
 	}
 	/**
 	 * Update the specified resource in storage.
@@ -112,15 +109,9 @@ class UsersController extends Controller
 	        Session::flash('errorMessage', 'Validation failed');
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
-			$user->username = Input::get('username');
+			$user->name = Input::get('name');
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
-			$image = Input::file('image');
-			if ($image) {
-				$filename = $image->getClientOriginalName();
-				$user->image = '/uploaded/' . $filename;
-				$image->move('uploaded/', $filename);
-			}
 			$user->save();
 			Auth::login($user);
 			$user = Auth::user();
