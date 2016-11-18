@@ -47,7 +47,6 @@ class UsersController extends Controller
 	public function store()
 	{
 		$user = new User();
-        Log::info(Input::all());
 		$validator = Validator::make(Input::all(), User::$rules);
 		if ($validator->fails()) {
 	        // validation failed, redirect to the tutorial create page with validation errors and old inputs
