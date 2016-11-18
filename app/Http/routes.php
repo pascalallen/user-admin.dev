@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@showWelcome');
 
 Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
 }]);
 
-Route::get('login', 'Controller@getLogin');
+Route::get('login', 'HomeController@getLogin');
 
-Route::post('login', 'Controller@postLogin');
+Route::post('login', 'HomeController@postLogin');
 
 Route::resource('users', 'UsersController');
