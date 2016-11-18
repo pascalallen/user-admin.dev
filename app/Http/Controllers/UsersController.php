@@ -59,7 +59,7 @@ class UsersController extends Controller
 			$user->save();
 			Auth::login($user);
 			$user = Auth::user();
-			Session::flash('successMessage', 'Your user has been saved.');
+			Session::flash('successMessage', 'Come on in!');
 			return Redirect::action('UsersController@show', $user->id);
 		}
 	}
