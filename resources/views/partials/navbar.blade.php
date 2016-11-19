@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				@if(Auth::check())
-					<li><a href="{{ action('PostsController@create') }}">New Post</a></li>
+					<li><a href="">New Post</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -38,7 +38,7 @@
 					<li><a href="{{ action('HomeController@getLogin') }}">Log In</a></li>
 					<li><a href="{{ action('UsersController@create') }}">Sign Up!</a></li>
 				@endif
-				<li><a href="{{ action('PostsController@index') }}">Posts</a></li>
+				<li><a href="">Posts</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

@@ -47,4 +47,10 @@ class HomeController extends BaseController {
 		    return Redirect::back()->withInput();
 		}
 	}
+
+	public function getLogout()
+	{
+		Auth::logout();
+		return Redirect::action('HomeController@showWelcome');
+	}
 }
