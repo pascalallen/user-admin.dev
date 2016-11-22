@@ -40,7 +40,7 @@ class HomeController extends BaseController {
 		$password = Input::get('password');
 		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 			$user = Auth::user();
-		    return Redirect::action('UsersController@index');
+		    return Redirect::action('UsersController@show');
 		} else {
 		    // login failed, go back to the login screen
 		    Session::flash('errorMessage', 'Wrong email or password!');
@@ -56,6 +56,7 @@ class HomeController extends BaseController {
 
 	public function search()
 	{
+		/*
 		$search = Input::get('search');
 	    $searchTerms = explode(' ', $search);
 	    $queryPost = Post::with('user');
@@ -72,5 +73,6 @@ class HomeController extends BaseController {
 	    $resultsPost = $queryPost->orderBy('created_at', 'desc')->get();
 	    $resultsUser = $queryUser->orderBy('created_at', 'desc')->get();
 	    return View::make('search')->with(['resultsPost' => $resultsPost, 'resultsUser' => $resultsUser]);
+	    */
 	}
 }

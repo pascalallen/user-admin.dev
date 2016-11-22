@@ -37,7 +37,7 @@
 				</div>
 				{!! Form::submit('submit', ['class' => 'btn btn-default']) !!}
 			{!! Form::close() !!}
-			<a href="{!! action('Controller@getLogin') !!}">Already a member? Login!</a>
+			<a href="{!! action('HomeController@getLogin') !!}">Already a member? Login!</a>
 		</div>
 	</div>
 

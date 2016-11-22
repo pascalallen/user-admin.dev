@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">User - Admin</a>
+			<a class="navbar-brand" href="{!! action('HomeController@showWelcome') !!}">User - Admin</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,24 +19,24 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="{{ action('UsersController@show', Auth::user()->id) }}">Profile</a></li>
-							<li><a href="{{action('UsersController@edit', Auth::id())}}">Account Settings</a></li>
+							<li><a href="{!! action('UsersController@show', Auth::user()->id) !!}">Profile</a></li>
+							<li><a href="{!!action('UsersController@edit', Auth::id())!!}">Account Settings</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="{{ action('HomeController@getLogout') }}">Log Out</a></li>
+							<li><a href="{!! action('HomeController@getLogout') !!}">Log Out</a></li>
 						</ul>
 					</li>
 				@endif
 			</ul>
-			{{ Form::open(array('action' => array('HomeController@search'), 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+			{!! Form::open(array('action' => array('HomeController@search'), 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) !!}
 				<div class="form-group">
-					{{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search']) }}
+					{!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
 				</div>
-				{{ Form::submit('submit', ['class' => 'btn btn-default']) }}
-			{{ Form::close() }}
+				{!! Form::submit('submit', ['class' => 'btn btn-default']) !!}
+			{!! Form::close() !!}
 			<ul class="nav navbar-nav navbar-right">
 				@if(!Auth::check())
-					<li><a href="{{ action('HomeController@getLogin') }}">Log In</a></li>
-					<li><a href="{{ action('UsersController@create') }}">Sign Up!</a></li>
+					<li><a href="{!! action('HomeController@getLogin') !!}">Log In</a></li>
+					<li><a href="{!! action('UsersController@create') !!}">Sign Up!</a></li>
 				@endif
 				<li><a href="">Posts</a></li>
 			</ul>

@@ -56,6 +56,7 @@ class UsersController extends Controller
 			$user->name = Input::get('name');
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
+			$user->admin = 1;
 			$user->save();
 			Auth::login($user);
 			$user = Auth::user();
@@ -73,7 +74,7 @@ class UsersController extends Controller
 	{
 		$user = User::find($id);
 		
-		return view('users.show', compact('user'));
+		return view('users/show', compact('user'));
 	}
 	/**
 	 * Show the form for editing the specified resource.
