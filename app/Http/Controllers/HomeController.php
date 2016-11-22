@@ -53,4 +53,24 @@ class HomeController extends BaseController {
 		Auth::logout();
 		return Redirect::action('HomeController@showWelcome');
 	}
+
+	public function search()
+	{
+		$search = Input::get('search');
+	    $searchTerms = explode(' ', $search);
+	    $queryPost = Post::with('user');
+	    $queryUser = User::with('post');
+	    foreach($searchTerms as $term)
+	    {
+	        $queryPost->where('title', 'LIKE', '%' . $term . '%')
+	        ->orWhere('body', 'LIKE', '%' . $term . '%')
+	        ->orWhere('location', 'LIKE', '%' . $term . '%');
+	        $queryUser->where('username', 'LIKE', '%' . $term . '%')
+	        ->orWhere('email', 'LIKE', '%' . $term . '%')
+	        ->orWhere('location', 'LIKE', '%' . $term . '%');
+	    }
+	    $resultsPost = $queryPost->orderBy('created_at', 'desc')->get();
+	    $resultsUser = $queryUser->orderBy('created_at', 'desc')->get();
+	    return View::make('search')->with(['resultsPost' => $resultsPost, 'resultsUser' => $resultsUser]);
+	}
 }
